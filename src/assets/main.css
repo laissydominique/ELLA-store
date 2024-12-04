@@ -4,6 +4,14 @@
   display: none;
 }
 
+.line {
+  background-color: #000000;
+  width: 100%;
+  height: 0.5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .color-header {
   height: 1rem;
   background-color: #bf7fff;
@@ -27,6 +35,23 @@
   gap: 3rem;
 }
 
+.option {
+  cursor: pointer;
+}
+
+.img-option {
+  cursor: pointer;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fddc5b;
+  border-radius: 5px;
+  padding: 0 1rem;
+}
+
 .options-imgs {
   margin-top: 3rem;
   display: flex;
@@ -40,6 +65,129 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.release-title {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.release-clothes,
+.release-jewelry {
+  margin-left: 4rem;
+}
+
+.release-jewelry {
+  margin-top: 4rem;
+}
+
+.release-title h1 {
+  font-size: 1.6rem;
+  color: #bf7fff;
+}
+
+.release-clothes h1 .release-jewelry h1 {
+  font-size: 1.3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva,
+    Verdana, sans-serif;
+}
+
+.content-realeases {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.container-realease {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 290px;
+  height: 350px;
+  border: 0.5px solid #000000;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.realease-data {
+  display: flex;
+}
+
+.price p {
+  font-weight: bold;
+}
+
+.contact-us {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.contact-us-title {
+  margin-bottom: 4rem;
+}
+
+.name input,
+.subject input,
+textarea {
+  width: 400px;
+  padding: 1rem;
+}
+
+.name,
+.subject,
+.textarea,
+.submit {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.name input,
+.subject input {
+  height: 30px;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+.submit {
+  margin-top: 1rem;
+}
+
+.submit button {
+  width: 200px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  border-radius: 30px;
+  background-color: #fddc5b;
+}
+
+.submit button:hover {
+  background-color: #ffe684;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+form label {
+  margin-bottom: 0.5rem;
 }
 
 /* **** BANNERS **** */
