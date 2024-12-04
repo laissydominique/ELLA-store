@@ -1,0 +1,113 @@
+@import "./base.css";
+
+.hidden {
+  display: none;
+}
+
+.color-header {
+  height: 1rem;
+  background-color: #bf7fff;
+}
+
+.header {
+  height: 6rem;
+  padding: 10px;
+  border-bottom: 1px solid #eee3f9;
+}
+
+.header,
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.options {
+  gap: 3rem;
+}
+
+.options-imgs {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* **** BANNERS **** */
+
+.banners {
+  width: 100%;
+  height: auto;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.slider-content {
+  width: 400%;
+  height: auto;
+  display: flex;
+}
+
+.slider-content input {
+  display: none;
+}
+
+.main-image {
+  width: 25%;
+  height: auto;
+  position: relative;
+  text-align: center;
+  transition: 1s;
+}
+
+.main-image img {
+  width: 100%;
+}
+
+.nav-manual,
+.nav-auto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  margin-top: 50rem;
+}
+
+.manual-btn,
+.nav-auto div {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 6px;
+  transition: 0.3s;
+}
+.manual-btn:hover {
+  background-color: white;
+}
+
+#radio1:checked ~ .nav-auto .auto-btn1 {
+  background: white;
+}
+
+#radio2:checked ~ .nav-auto .auto-btn2 {
+  background: white;
+}
+
+#radio1:checked ~ .first {
+  margin-left: 0%;
+}
+
+#radio2:checked ~ .first {
+  margin-left: -25%;
+}
