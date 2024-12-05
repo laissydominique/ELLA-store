@@ -13,14 +13,39 @@
 }
 
 .color-header {
-  height: 1rem;
+  display: flex;
+  height: 1.7rem;
+  align-items: center;
   background-color: #bf7fff;
+}
+
+.home {
+  cursor: pointer;
+  padding-left: 0.7rem;
+}
+
+.logo{
+  cursor: pointer;
+}
+
+.home i {
+  cursor: pointer;
+}
+
+.color-header p {
+  color: #ffffff;
+  margin-left: 0.5rem;
 }
 
 .header {
   height: 6rem;
   padding: 10px;
   border-bottom: 1px solid #eee3f9;
+}
+
+.home,
+.color-header {
+  cursor: pointer;
 }
 
 .header,
@@ -39,6 +64,10 @@
   cursor: pointer;
 }
 
+.option p:hover {
+  color: #c8a2ed;
+}
+
 .img-option {
   cursor: pointer;
 }
@@ -50,6 +79,10 @@
   border: 1px solid #fddc5b;
   border-radius: 5px;
   padding: 0 1rem;
+}
+
+.contact:hover {
+  background-color: #fddc5b;
 }
 
 .options-imgs {
@@ -113,7 +146,9 @@
   border: 0.5px solid #000000;
   border-radius: 20px;
   padding: 2rem;
+  cursor: pointer;
 }
+
 
 .realease-data {
   display: flex;
@@ -125,6 +160,7 @@
 
 .contact-us {
   margin-top: 5rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -167,7 +203,7 @@ textarea {
 }
 
 .submit button {
-  width: 200px;
+  width: 400px;
   height: 30px;
   cursor: pointer;
   border: none;
@@ -188,6 +224,22 @@ form {
 
 form label {
   margin-bottom: 0.5rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: 2.4rem;
+  background-color: #bf7fff;
+}
+
+.footer p {
+  margin-right: 1rem;
+  color: #ffffff;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* **** BANNERS **** */
@@ -259,3 +311,5 @@ form label {
 #radio2:checked ~ .first {
   margin-left: -25%;
 }
+
+/* ANIMATIONS */

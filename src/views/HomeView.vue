@@ -1,8 +1,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
-const cont = ref(1);
-const optionsClothes = ref([]);
-const optionsJewelry = ref([]);
+import { useRouter } from 'vue-router';
+import { useItemsStore } from '../stores/items';
+
+const useItems = useItemsStore();
+const router = useRouter();
+const cont = ref();
 
 function scrollToContactUs() {
   const section = document.getElementById('contact-us');
@@ -11,43 +14,36 @@ function scrollToContactUs() {
   }
 }
 
-async function getWomensClothing() {
-  const response = await fetch(
-    `https://fakestoreapi.com/products/category/women's clothing?limit=4`
-  );
-  if (!response.ok) {
-    return;
-  }
-  const data = await response.json();
+function getScroll(){
+  const fadeIn = {
+  duration: 800,       
+  delay: 10,          
+  easing: 'ease-in-out',
+  reset:true,
+  threshold: 0.5
+};
 
-  data.forEach((item) => {
-    optionsClothes.value.push({
-      image: item.image,
-      title: item.title,
-      price: item.price.toLocaleString("pt-BR").replace("R$", "").trim(),
-    });
-  });
+  const slideUp = {
+  origin: 'bottom',    
+  distance: '50px',     
+  duration: 800,       
+  delay: 30,          
+  easing: 'ease-in-out',
+  threshold: 0.5
+};
 
-}
+const slideDown = {
+  origin: 'top',    
+  distance: '50px',     
+  duration: 800,       
+  delay: 30,          
+  easing: 'ease-in-out',
+  reset:true
+};
 
-async function getJewelry() {
-  const response = await fetch(
-    `https://fakestoreapi.com/products/category/jewelery?limit=4`
-  );
-  if (!response.ok) {
-    return;
-  }
-  const data = await response.json();
-
-  data.forEach((item) => {
-    optionsJewelry.value.push({
-      image: item.image,
-      title: item.title,
-      price: item.price.toLocaleString("pt-BR").replace("R$", "").trim(),
-    });
-  });
-  console.log(optionsJewelry.value)
-
+// ScrollReveal().reveal('.fadeIn', fadeIn);
+ScrollReveal().reveal('.slideDown', slideDown);
+ScrollReveal().reveal('.slideUp', slideUp);
 }
 
 function nextImage() {
@@ -58,9 +54,9 @@ function nextImage() {
 }
 
 onMounted(() => {
-  getWomensClothing();
-  getJewelry();
-
+  useItems.getWomensClothing();
+  useItems.getJewelry();
+  getScroll();
   setInterval(() => {
     nextImage();
   }, 5000);
@@ -68,34 +64,35 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="color-header"></div>
+  <div class="color-header">
+  </div>
   <header class="header">
     <div class="logo">
       <img src="/src/assets/imgs/modelo-logo-1.png" alt="" width="130px" height="130px" />
     </div>
-    <div class="options">
-      <div class=" option shorts">
+    <div class="options slideDown ">
+      <div class="option shorts" >
         <p>Shorts</p>
       </div>
       <div class="option blouses">
         <p>Blusas</p>
       </div>
-      <div class="option pants">
+      <div class="option pants" >
         <p>Calças</p>
       </div>
       <div class="option skirts">
         <p>Saias</p>
       </div>
-      <div class="option dress">
+      <div class="option dress" >
         <p>Vestidos</p>
       </div>
-      <div class="option blazer">
+      <div class="option blazer" >
         <p>Blazers</p>
       </div>
-      <div class="option accessories">
+      <div class="option accessories" >
         <p>Acessórios</p>
       </div>
-      <div class="option bags">
+      <div class="option bags" >
         <p>Bolsas</p>
       </div>
     </div>
@@ -120,14 +117,14 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="options-imgs img-option">
-    <div class="img-short">
+  <div class="options-imgs slideDown">
+    <div class="img-short  img-option" >
       <img src="/src/assets/imgs/short-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Shorts</p>
       </div>
     </div>
-    <div class="img-blouse img-option">
+    <div class="img-blouse img-option" >
       <img src="/src/assets/imgs/blusa-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Blusas</p>
@@ -145,7 +142,7 @@ onMounted(() => {
         <p>Saias</p>
       </div>
     </div>
-    <div class="img-dress img-option">
+    <div class="img-dress img-option" >
       <img src="/src/assets/imgs/vestido-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Vestidos</p>
@@ -157,29 +154,29 @@ onMounted(() => {
         <p>Blazers</p>
       </div>
     </div>
-    <div class="img-acessories img-option">
+    <div class="img-acessories img-option" >
       <img src="/src/assets/imgs/joias-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Acessórios</p>
       </div>
     </div>
-    <div class="img-bags img-option">
+    <div class="img-bags img-option" >
       <img src="/src/assets/imgs/bolsas-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Bolsas</p>
       </div>
     </div>
   </div>
-  <div class="release-title">
+  <div class="release-title slideDown ">
     <div class="line"></div>
     <h1>Lançamentos</h1>
     <div class="line"></div>
   </div>
-  <div class="release-clothes">
+  <div class="release-clothes fadeIn">
     <h1>Blusas</h1>
   </div>
-  <div class="content-realeases">
-    <div class="container-realease" v-for="item in optionsClothes">
+  <div class="content-realeases ">
+    <div class="container-realease" v-for="item in useItems.optionsClothes" :key="item.clothingId" @click="useItems.getThisClothing(item.clothingId)">
       <div class="image">
         <img :src="item.image" alt="" width="160px" height="160px" />
       </div class="realease-data">
@@ -193,11 +190,11 @@ onMounted(() => {
     </div>
     </div>
   </div>
-  <div class="release-jewelry">
+  <div class="release-jewelry fadeIn ">
     <h1>Acessórios</h1>
   </div>
-  <div class="content-realeases">
-    <div class="container-realease" v-for="item in optionsJewelry">
+  <div class="content-realeases ">
+    <div class="container-realease" v-for="item in useItems.optionsJewelry" :key="item.jewelryId" @click="useItems.getThisJewelry(item.jewelryId)">
       <div class="image">
         <img :src="item.image" alt="" width="160px" height="160px" />
       </div class="realease-data">
@@ -218,11 +215,11 @@ onMounted(() => {
       <div class="line"></div>
     </div>
     <form action="#"> 
-    <div class="name">
+    <div class="name ">
       <label for="text">Seu nome</label>
       <input type="text">
     </div>
-    <div class="subject">
+    <div class="subject ">
       <label for="text">Assunto</label>
       <input type="text">
     </div>
@@ -230,9 +227,12 @@ onMounted(() => {
       <label for="text">Dúvida</label>
       <textarea></textarea>
     </div>
-    <div class="submit">
+    <div class="submit ">
       <button type="submit" >Enviar</button>
     </div>
   </form>
   </div>
-</template>
+  <div class="footer">
+    <p>Desenvolvido por: Laissy Dominique</p>
+  </div>
+</template> 
