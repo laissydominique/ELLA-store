@@ -5,7 +5,7 @@ import { useItemsStore } from '../stores/items';
 
 const useItems = useItemsStore();
 const router = useRouter();
-const cont = ref();
+const cont = ref(1);
 
 function scrollToContactUs() {
   const section = document.getElementById('contact-us');
