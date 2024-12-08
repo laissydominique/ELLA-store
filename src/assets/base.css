@@ -1,8 +1,7 @@
 * {
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
-    sans-serif;
-  outline: none;
+  font-family: "Assistant", sans-serif;
+  text-decoration: none;
 }
 
 html,
@@ -11,4 +10,12 @@ body {
   height: 100%;
   margin: 0;
   box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: #fddc5b;
 }

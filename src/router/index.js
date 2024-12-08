@@ -10,6 +10,7 @@ import BagsView from "@/views/BagsView.vue";
 import BlazersView from "@/views/BlazersView.vue";
 import SpecifcClothingView from "@/views/SpecifcClothingView.vue";
 import SpecifcAcessorieView from "@/views/SpecifcAcessorieView.vue";
+import ItemView from "@/views/ItemView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +75,12 @@ const router = createRouter({
       path: "/jewelry/:jewelryId",
       name: "jewelry",
       component: SpecifcAcessorieView,
+      props: true,
+    },
+    {
+      path: "/:item/:itemId",
+      name: "item",
+      component: ItemView,
       props: true,
     },
   ],

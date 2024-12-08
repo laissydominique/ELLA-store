@@ -1,11 +1,18 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { useRouter } from 'vue-router';
 import { useItemsStore } from '../stores/items';
+import { useRouter } from "vue-router";
 
-const useItems = useItemsStore();
 const router = useRouter();
+const useItems = useItemsStore();
 const cont = ref(1);
+
+const scrollToTop = () => {
+ window.scrollTo({
+top: 0,
+behavior: 'smooth'
+ })
+}
 
 function scrollToContactUs() {
   const section = document.getElementById('contact-us');
@@ -15,14 +22,6 @@ function scrollToContactUs() {
 }
 
 function getScroll(){
-  const fadeIn = {
-  duration: 800,       
-  delay: 10,          
-  easing: 'ease-in-out',
-  reset:true,
-  threshold: 0.5
-};
-
   const slideUp = {
   origin: 'bottom',    
   distance: '50px',     
@@ -38,10 +37,10 @@ const slideDown = {
   duration: 800,       
   delay: 30,          
   easing: 'ease-in-out',
-  reset:true
+  reset:true,
+  threshold: 0.5
 };
 
-// ScrollReveal().reveal('.fadeIn', fadeIn);
 ScrollReveal().reveal('.slideDown', slideDown);
 ScrollReveal().reveal('.slideUp', slideUp);
 }
@@ -56,6 +55,7 @@ function nextImage() {
 onMounted(() => {
   useItems.getWomensClothing();
   useItems.getJewelry();
+  window.scrollTo(0, 0);
   getScroll();
   setInterval(() => {
     nextImage();
@@ -70,29 +70,29 @@ onMounted(() => {
     <div class="logo">
       <img src="/src/assets/imgs/modelo-logo-1.png" alt="" width="130px" height="130px" />
     </div>
-    <div class="options slideDown ">
-      <div class="option shorts" >
+    <div class="options slideDown">
+      <div class="option shorts" @click="router.push({path:'shorts'})" >
         <p>Shorts</p>
       </div>
-      <div class="option blouses">
+      <div class="option blouses"  @click="router.push({path:'blouses'})">
         <p>Blusas</p>
       </div>
-      <div class="option pants" >
+      <div class="option pants"  @click="router.push({path:'pants'})" >
         <p>Calças</p>
       </div>
-      <div class="option skirts">
+      <div class="option skirts"  @click="router.push({path:'skirts'})">
         <p>Saias</p>
       </div>
-      <div class="option dress" >
+      <div class="option dress"  @click="router.push({path:'dresses'})" >
         <p>Vestidos</p>
       </div>
-      <div class="option blazer" >
+      <div class="option blazer"  @click="router.push({path:'blazers'})" >
         <p>Blazers</p>
       </div>
-      <div class="option accessories" >
+      <div class="option accessories" @click="router.push({path:'acessories'});">
         <p>Acessórios</p>
       </div>
-      <div class="option bags" >
+      <div class="option bags"  @click="router.push({path:'bags'})" >
         <p>Bolsas</p>
       </div>
     </div>
@@ -117,50 +117,50 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="options-imgs slideDown">
-    <div class="img-short  img-option" >
+  <div class="options-imgs ">
+    <div class="img-short  img-option"  @click="router.push({path:'shorts'})" >
       <img src="/src/assets/imgs/short-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Shorts</p>
       </div>
     </div>
-    <div class="img-blouse img-option" >
+    <div class="img-blouse img-option"  @click="router.push({path:'blouses'})">
       <img src="/src/assets/imgs/blusa-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Blusas</p>
       </div>
     </div>
-    <div class="img-pants img-option">
+    <div class="img-pants img-option"  @click="router.push({path:'pants'})"> 
       <img src="/src/assets/imgs/calca-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Calças</p>
       </div>
     </div>
-    <div class="img-skirts img-option">
+    <div class="img-skirts img-option"  @click="router.push({path:'skirts'})">
       <img src="/src/assets/imgs/saia-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Saias</p>
       </div>
     </div>
-    <div class="img-dress img-option" >
+    <div class="img-dress img-option"  @click="router.push({path:'dresses'})">
       <img src="/src/assets/imgs/vestido-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Vestidos</p>
       </div>
     </div>
-    <div class="img-blazer img-option">
+    <div class="img-blazer img-option"  @click="router.push({path:'blazers'})">
       <img src="/src/assets/imgs/blazer-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Blazers</p>
       </div>
     </div>
-    <div class="img-acessories img-option" >
+    <div class="img-acessories img-option" @click="router.push({path:'acessories'})">
       <img src="/src/assets/imgs/joias-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Acessórios</p>
       </div>
     </div>
-    <div class="img-bags img-option" >
+    <div class="img-bags img-option"  @click="router.push({path:'bags'})" >
       <img src="/src/assets/imgs/bolsas-ella.png" alt="" width="85px" height="85px" />
       <div class="caption">
         <p>Bolsas</p>
@@ -172,15 +172,15 @@ onMounted(() => {
     <h1>Lançamentos</h1>
     <div class="line"></div>
   </div>
-  <div class="release-clothes fadeIn">
+  <div class="release-clothes ">
     <h1>Blusas</h1>
   </div>
-  <div class="content-realeases ">
+  <div class="content-realeases">
     <div class="container-realease" v-for="item in useItems.optionsClothes" :key="item.clothingId" @click="useItems.getThisClothing(item.clothingId)">
       <div class="image">
         <img :src="item.image" alt="" width="160px" height="160px" />
       </div class="realease-data">
-      <div> 
+      <div class="descriptions"> 
       <div class="title">
         <p>{{ item.title }}</p>
       </div>
@@ -190,7 +190,7 @@ onMounted(() => {
     </div>
     </div>
   </div>
-  <div class="release-jewelry fadeIn ">
+  <div class="release-jewelry ">
     <h1>Acessórios</h1>
   </div>
   <div class="content-realeases ">
@@ -198,7 +198,7 @@ onMounted(() => {
       <div class="image">
         <img :src="item.image" alt="" width="160px" height="160px" />
       </div class="realease-data">
-      <div> 
+      <div class="descriptions"> 
       <div class="title">
         <p translate="yes">{{ item.title }}</p>
       </div>
@@ -215,7 +215,7 @@ onMounted(() => {
       <div class="line"></div>
     </div>
     <form action="#"> 
-    <div class="name ">
+    <div class="name">
       <label for="text">Seu nome</label>
       <input type="text">
     </div>
@@ -233,6 +233,7 @@ onMounted(() => {
   </form>
   </div>
   <div class="footer">
-    <p>Desenvolvido por: Laissy Dominique</p>
+    <p class="top" @click="scrollToTop"><a>Voltar ao topo </a></p> 
+    <p> <a target="_blank" href="https://www.linkedin.com/in/laissydominique/">Desenvolvido por: Laissy Dominique</a></p>
   </div>
 </template> 

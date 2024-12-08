@@ -9,6 +9,16 @@ export const useItemsStore = defineStore("items", () => {
   const jewelry = ref({});
   const clothing = ref({});
   const rates = ref({});
+  const isLoading = ref(false);
+
+  const showLoading = () => {
+    isLoading.value = true;
+    setTimeout(() => (isLoading.value = false), 3000);
+  };
+
+  const onCancel = () => {
+    isLoading.value = false;
+  };
 
   async function getWomensClothing() {
     optionsClothes.value = [];
