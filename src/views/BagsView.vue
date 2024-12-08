@@ -2,8 +2,10 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
+import { useItemsStore } from "../stores/items"; 
+const useItems = useItemsStore();
 const router = useRouter();
-const acessories = ref([]);
+const bags = ref([]);
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -54,75 +56,75 @@ function getScroll() {
   ScrollReveal().reveal(".slideLeft", slideLeft);
 }
 
-async function getAcessories() {
-  acessories.value.push(
+async function getBags() {
+  bags.value.push(
     {
-      id: 28,
-      title: "Bolsa de Couro Classic",
-      image:
-        "https://emmaleblanc.com.br/cdn/shop/files/S18d22671bbcf410398789d9217dd01489.webp?v=1714076463&width=1445",
-      price: 180.0 + ",00",
-    },
-    {
-      id: 29,
-      title: "Bolsa Tote de Algodão",
-      image: "https://down-br.img.susercontent.com/file/e18d1c6db17e158aa94d9d1009d967b5",
-      price: 150.0 + ",00",
-    },
-    {
-      id: 30,
-      title: "Bolsa Crossbody em Camurça",
-      image:
-        "https://img1.shopcider.com/product/1724206995000-m4CjrW.jpg?x-oss-process=image/resize,w_1050,m_lfit/quality,Q_60/interlace,1",
-      price: 210.0 + ",00",
-    },
-    {
-      id: 31,
-      title: "Bolsa de Mão Estilo Clutch",
-      image:
-        "https://images.tcdn.com.br/img/img_prod/464874/bolsa_pequena_de_mao_de_couro_cinza_14593_1_43f6d7457df95327588304902d944341.jpg",
-      price: 130.0 + ",00",
-    },
-    {
-      id: 32,
-      title: "Bolsa Shoulder Bag de Crochê",
-      image:
-        "https://ae01.alicdn.com/kf/S81004be45ccb4561bbb33a511b65ae1er/Est-tica-Bow-Pattern-Shoulder-Bag-para-mulheres-bolsa-de-croch-bolsa-de-praia-casual-de.jpg",
-      price: 160.0 + ",00",
-    },
-    {
-      id: 33,
-      title: "Bolsa de Ombro Colorida",
-      image: "https://ae01.alicdn.com/kf/Sb15353c79e0c451696edcfbb6df7a2a0Z.jpg_640x640.jpg_.webp",
-      price: 120.0 + ",00",
-    },
-    {
-      id: 34,
-      title: "Bolsa Satchel de Couro",
-      image:
-        "https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h3f/ha9/h00/h00/9401321226270/5001803660009U-HO-BASEIMAGE-Midres.jpg",
-      price: 220.0 + ",00",
-    },
-    {
-      id: 35,
-      title: "Bolsa Pochete Estilosa",
-      image:
-        "https://photos.enjoei.com.br/pochete-bolsa-feminina-super-espacosa-105845428/800x800/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy83ODI5MDg2L2FhZDZlYTdmODI0ZWZkM2Q4NTVmMjJhZmU1Y2I2MTM3LmpwZw",
-      price: 110.0 + ",00",
-    },
-    {
-      id: 36,
-      title: "Bolsa Carteiro Vintage",
-      image:
-        "https://images-americanas.b2w.io/produtos/7475015810/imagens/pasta-feminina-de-couro-legitimo-14-carteiro-com-ziper/7475015811_2_large.jpg",
-      price: 200.0 + ",00",
-    }
+        id: 10,
+        title: "Bolsa de Couro Classic",
+        image:
+          "https://emmaleblanc.com.br/cdn/shop/files/S18d22671bbcf410398789d9217dd01489.webp?v=1714076463&width=1445",
+        price: 180.0 + ",00",
+      },
+      {
+        id: 11,
+        title: "Bolsa Tote de Algodão",
+        image: "https://down-br.img.susercontent.com/file/e18d1c6db17e158aa94d9d1009d967b5",
+        price: 150.0 + ",00",
+      },
+      {
+        id: 12,
+        title: "Bolsa Crossbody em Camurça",
+        image:
+          "https://img1.shopcider.com/product/1724206995000-m4CjrW.jpg?x-oss-process=image/resize,w_1050,m_lfit/quality,Q_60/interlace,1",
+        price: 210.0 + ",00",
+      },
+      {
+        id: 13,
+        title: "Bolsa de Mão Estilo Clutch",
+        image:
+          "https://images.tcdn.com.br/img/img_prod/464874/bolsa_pequena_de_mao_de_couro_cinza_14593_1_43f6d7457df95327588304902d944341.jpg",
+        price: 130.0 + ",00",
+      },
+      {
+        id: 14,
+        title: "Bolsa Shoulder Bag de Crochê",
+        image:
+          "https://ae01.alicdn.com/kf/S81004be45ccb4561bbb33a511b65ae1er/Est-tica-Bow-Pattern-Shoulder-Bag-para-mulheres-bolsa-de-croch-bolsa-de-praia-casual-de.jpg",
+        price: 160.0 + ",00",
+      },
+      {
+        id: 15,
+        title: "Bolsa de Ombro Colorida",
+        image: "https://ae01.alicdn.com/kf/Sb15353c79e0c451696edcfbb6df7a2a0Z.jpg_640x640.jpg_.webp",
+        price: 120.0 + ",00",
+      },
+      {
+        id: 16,
+        title: "Bolsa Satchel de Couro",
+        image:
+          "https://secure-static.arezzo.com.br/medias/sys_master/arezzo/arezzo/h3f/ha9/h00/h00/9401321226270/5001803660009U-HO-BASEIMAGE-Midres.jpg",
+        price: 220.0 + ",00",
+      },
+      {
+        id: 17,
+        title: "Bolsa Pochete Estilosa",
+        image:
+          "https://photos.enjoei.com.br/pochete-bolsa-feminina-super-espacosa-105845428/800x800/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy83ODI5MDg2L2FhZDZlYTdmODI0ZWZkM2Q4NTVmMjJhZmU1Y2I2MTM3LmpwZw",
+        price: 110.0 + ",00",
+      },
+      {
+        id: 18,
+        title: "Bolsa Carteiro Vintage",
+        image:
+          "https://images-americanas.b2w.io/produtos/7475015810/imagens/pasta-feminina-de-couro-legitimo-14-carteiro-com-ziper/7475015811_2_large.jpg",
+        price: 200.0 + ",00",
+      },
   );
 }
 
 onMounted(() => {
   window.scrollTo(0, 0);
-  getAcessories();
+  getBags();
   getScroll();
 });
 </script>
@@ -173,9 +175,9 @@ onMounted(() => {
     <h2>Que bolsa vai ser a peça-chave para o seu look do dia?</h2>
   </div>
   <div class="content-products">
-    <div class="container-products" v-for="item in acessories">
-      <div class="image-product">
-        <img :src="item.image" alt="" width="400px" height="400px" />
+    <div class="container-products" v-for="item in bags">
+      <div class="image-product"  @click="useItems.getThisItem(item.id)"> 
+        <img :src="item.image" alt="" width="400px" height="400px"  />
       </div>
       <div class="description-product">
         <div class="title-product">

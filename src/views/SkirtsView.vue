@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useItemsStore } from "../stores/items"; 
 
+const useItems = useItemsStore(); 
 const router = useRouter();
 const skirts = ref([]);
 
@@ -54,63 +56,63 @@ function getScroll() {
   ScrollReveal().reveal(".slideLeft", slideLeft);
 }
 
-async function getSkirtss() {
+async function getSkirts() {
   skirts.value.push(
     {
-      id: 10,
+      id: 64,
       title: "Saia Midi Plissada",
       image:
         "https://static.zara.net/assets/public/52eb/1009/51814dfb95b4/70a4d8fdf65b/05109600620-p/05109600620-p.jpg?ts=1724923179031&w=824",
       price: 120.0 + ",00",
     },
     {
-      id: 12,
+      id: 65,
       title: "Saia Longa Estampada",
       image: "https://www.equus.com.br/images/thumbs/0007153_saia-longa-estampada-equus_600.jpeg",
       price: 140.0 + ",00",
     },
     {
-      id: 14,
+      id: 66,
       title: "Saia Evase Floral",
       image:
         "https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/saia-midi/saia-evase-floral-azul-moda-evangelica_347339_600_1.jpg",
       price: 130.0 + ",00",
     },
     {
-      id: 15,
+      id: 67,
       title: "Saia Lápis Preta",
       image: "https://www.polemodas.com.br/images/Produtos/1300/63322.jpg",
       price: 110.0 + ",00",
     },
     {
-      id: 16,
+      id: 68,
       title: "Saia Curta de Tecido Leve",
       image:
         "https://static.ecosweb.com.br/public/produtos/moda-feminina/saia-curta/saia-curta-em-tecido-rosa_377125_600_1.webp",
       price: 95.0 + ",00",
     },
     {
-      id: 17,
+      id: 69,
       title: "Saia Midi de Linho",
       image:
         "https://cdn.awsli.com.br/600x1000/1141/1141205/produto/269171002/04013-xl-tyoll31okw.png",
       price: 135.0 + ",00",
     },
     {
-      id: 18,
+      id: 70,
       title: "Saia Rodada Estampada",
       image:
         "https://www.chicprincess.com.br/wp-content/uploads/2023/03/saia-rodada-curta-estampa-de-bolinhas-1.jpg",
       price: 125.0 + ",00",
     },
     {
-      id: 11,
+      id: 71,
       title: "Saia Jeans Curta",
       image: "https://i.pinimg.com/564x/77/55/b9/7755b9dd48f89e0ca371ed54f77f9fe3.jpg",
       price: 90.0 + ",00",
     },
     {
-      id: 13,
+      id: 72,
       title: "Saia de Couro Preta",
       image:
         "https://cdn.awsli.com.br/600x700/1952/1952461/produto/213960842/img_4218-5kr7w22r5h.jpg",
@@ -121,7 +123,7 @@ async function getSkirtss() {
 
 onMounted(() => {
   window.scrollTo(0, 0);
-  getSkirtss();
+  getSkirts();
   getScroll();
 });
 </script>
@@ -165,7 +167,7 @@ onMounted(() => {
   </header>
   <div class="product-title slideLeft">
     <div class="line"></div>
-    <h1>Acessórios</h1>
+    <h1>Saias</h1>
     <div class="line"></div>
   </div>
   <div class="inspiration slideLeft">
@@ -173,7 +175,7 @@ onMounted(() => {
   </div>
   <div class="content-products">
     <div class="container-products" v-for="item in skirts">
-      <div class="image-product">
+      <div class="image-product"  @click="useItems.getThisItem(item.id)">
         <img :src="item.image" alt="" width="400px" height="510px" />
       </div>
       <div class="description-product">

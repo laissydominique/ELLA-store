@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useItemsStore } from "../stores/items"; 
 
+const useItems = useItemsStore(); 
 const router = useRouter();
-const acessories = ref([]);
+const blazers = ref([]);
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -54,52 +56,53 @@ function getScroll() {
   ScrollReveal().reveal(".slideLeft", slideLeft);
 }
 
-async function getAcessories() {
-  acessories.value.push(
+async function getBlazers() {
+  blazers.value.push(
     {
-      id: 22,
-      title: "Blazer Xadrez",
-      image:
-        "https://static.ecosweb.com.br/public/produtos/moda-feminina/blazer/blazer-xadrez-grid-em-tecido-de-alfaiataria_375053_600_1.webp",
-      price: 270.0 + ",00",
-    },
-    {
-      id: 27,
-      title: "Blazer de Couro Verde",
-      image:
-        "https://lojavivavida.vteximg.com.br/arquivos/ids/223516-1000-1500/Blazer-de-couro-verde-Animale.png?v=637995600361800000",
-      price: 330.0 + ",00",
-    },
-    {
-      id: 25,
-      title: "Blazer Casual Cinza Claro",
-      image:
-        "https://images.tcdn.com.br/img/img_prod/1076440/blazer_alongado_maria_cinza_787_2_62de4e19039f254ff7101a0965178acb.jpg",
-      price: 230.0 + ",00",
-    },
-    {
-      id: 20,
-      title: "Blazer Com Ombreira",
-      image:
-        "https://static.riachuelo.com.br/RCHLO/14592185007/portrait/6726a30822bef8a6ac30bf4f1215f76970b39c40.jpg",
-      price: 250.0 + ",00",
-    },
-    {
-      id: 21,
-      title: "Blazer de Linho Off-White",
-      image:
-        "https://lojaanimale.vtexassets.com/arquivos/ids/1805981/03040465_0024_1-BLAZER-DE-LINHO-OVERSIZED-OFF-WHITE.jpg?v=638584821506500000",
-      price: 280.0 + ",00",
-    },
-    {
-      id: 23,
+        id: 19,
+        title: "Blazer Xadrez",
+        image:
+          "https://static.ecosweb.com.br/public/produtos/moda-feminina/blazer/blazer-xadrez-grid-em-tecido-de-alfaiataria_375053_600_1.webp",
+        price: 270.0 + ",00",
+      },
+      {
+        id: 20,
+        title: "Blazer de Couro Verde",
+        image:
+          "https://lojavivavida.vteximg.com.br/arquivos/ids/223516-1000-1500/Blazer-de-couro-verde-Animale.png?v=637995600361800000",
+        price: 330.0 + ",00",
+      },
+      {
+        id: 21,
+        title: "Blazer Casual Cinza Claro",
+        image:
+          "https://images.tcdn.com.br/img/img_prod/1076440/blazer_alongado_maria_cinza_787_2_62de4e19039f254ff7101a0965178acb.jpg",
+        price: 230.0 + ",00",
+      },
+      {
+        id: 22,
+        title: "Blazer Com Ombreira",
+        image:
+          "https://static.riachuelo.com.br/RCHLO/14592185007/portrait/6726a30822bef8a6ac30bf4f1215f76970b39c40.jpg",
+        price: 250.0 + ",00",
+      },
+      {
+        id: 23,
+        title: "Blazer de Linho Off-White",
+        image:
+          "https://lojaanimale.vtexassets.com/arquivos/ids/1805981/03040465_0024_1-BLAZER-DE-LINHO-OVERSIZED-OFF-WHITE.jpg?v=638584821506500000",
+        price: 280.0 + ",00",
+     
+      },
+      {
+      id: 24,
       title: "Blazer de Veludo Preto",
       image:
         "https://gregory.vtexassets.com/arquivos/ids/447128/blazer-veludo-transpassado-botoes---41865-01.jpg?v=638217659148870000",
       price: 320.0 + ",00",
     },
     {
-      id: 19,
+      id: 25,
       title: "Blazer Clássico",
       image:
         "https://ecoms1.com/47445/imgs/big/@v3/1681406970308-whatsappimage2023-04-13at14.25.183.jpeg.avif",
@@ -112,9 +115,8 @@ async function getAcessories() {
         "https://triangulo.cdn.magazord.com.br/img/2023/02/produto/2899/blazer-preto-alongado-rafaela-frente-novo.jpg?ims=fit-in/635x865/filters:fill(white)",
       price: 270.0 + ",00",
     },
-
     {
-      id: 24,
+      id: 27,
       title: "Blazer Longo Estilo Terno",
       image:
         "https://static.deluccaclassico.com.br/public/deluccaclassico/imagens/produtos/blazer-feminino-tere-curto-de-alfaiataria-azul-marinho-66475edcacc65.jpg",
@@ -125,7 +127,7 @@ async function getAcessories() {
 
 onMounted(() => {
   window.scrollTo(0, 0);
-  getAcessories();
+  getBlazers();
   getScroll();
 });
 </script>
@@ -176,9 +178,9 @@ onMounted(() => {
     <h2>Você não acha que um blazer pode ser o destaque do seu próximo evento?</h2>
   </div>
   <div class="content-products">
-    <div class="container-products" v-for="item in acessories">
-      <div class="image-product">
-        <img :src="item.image" alt="" width="400px" height="520px" />
+    <div class="container-products" v-for="item in blazers">
+      <div class="image-product"  @click="useItems.getThisItem(item.id)">
+        <img :src="item.image" alt="" width="400px" height="520px"/>
       </div>
       <div class="description-product">
         <div class="title-product">

@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useItemsStore } from "../stores/items"; 
 
+const useItems = useItemsStore(); 
 const router = useRouter();
 const blouses = ref([]);
 
@@ -57,62 +59,62 @@ function getScroll() {
 async function getBlouses() {
   blouses.value.push(
     {
-      id: 36,
+      id: 28,
       title: "Blusa Gola Alta",
       image:
         "https://s3-sa-east-1.amazonaws.com/paralelo21.img/produto/3697/blusa-feminina-de-algodao-gola-alta-e-manga-curta-gisele-3697-large.webp",
       price: 100.0 + ",00",
     },
     {
-      id: 37,
+      id: 29,
       title: "Blusa com Decote V",
       image:
         "https://shoulder.vtexassets.com/arquivos/ids/2161223/232013920_0060_010-BLUSA-DECOTE-V-MANGA-FLARE.jpg?v=638260895056700000",
       price: 60.0 + ",00",
     },
     {
-      id: 38,
+      id: 30,
       title: "Blusa Manga Bufante",
       image:
         "https://images.tcdn.com.br/img/img_prod/1173729/blusa_manga_bufante_em_linho_livia_259_1_e940b89eab48b611dc92b4aa3f2a3fa3.jpg",
       price: 95.0 + ",00",
     },
     {
-      id: 30,
+      id: 31,
       title: "Blusa Básica Branca",
       image:
         "https://images2.marisa.com.br/medias/sys_master/images/images/hab/he5/16297255174174/Blusa-Basica-Feminina-Manga-Curta-Marisa-10049157413-C1.jpg",
       price: 50.0 + ",00",
     },
     {
-      id: 31,
+      id: 32,
       title: "Blusa de Malha Estampada",
       image:
         "https://images.tcdn.com.br/img/img_prod/1224102/blusa_de_malha_estampada_manga_curta_627_1_3ac2d3ad2dd371b349086fb12f8b75cd.jpg",
       price: 70.0 + ",00",
     },
     {
-      id: 32,
+      id: 33,
       title: "Blusa de Alça com Renda",
       image:
         "https://cdn.awsli.com.br/600x700/834/834073/produto/246747317/411833053_776842991127313_4919129350128979364_n-vwmwa1644b.jpg",
       price: 65.0 + ",00",
     },
     {
-      id: 33,
+      id: 34,
       title: "Blusa Manga Longa Listrada",
       image:
         "https://torratorra.vtexassets.com/arquivos/ids/945192/16631000132138-4.jpg?v=638210473496700000",
       price: 90.0 + ",00",
     },
     {
-      id: 34,
+      id: 35,
       title: "Blusa Cropped de Crochê",
       image: "https://i.pinimg.com/550x/d5/2b/67/d52b67bd9407bf2570470e9a9efefbc3.jpg",
       price: 80.0 + ",00",
     },
     {
-      id: 35,
+      id: 36,
       title: "Blusa com Ombros de Fora",
       image:
         "https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/blusas/blusa-ombros-de-fora-e-decote-nas-costas-marinho_186338_600_2.jpg",
@@ -175,7 +177,7 @@ onMounted(() => {
   </div>
   <div class="content-products">
     <div class="container-products" v-for="item in blouses">
-      <div class="image-product">
+      <div class="image-product"  @click="useItems.getThisItem(item.id)">
         <img :src="item.image" alt="" width="400px" height="500px" />
       </div>
       <div class="description-product">

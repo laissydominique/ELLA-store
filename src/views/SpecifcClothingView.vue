@@ -9,44 +9,20 @@ const router = useRouter();
 const clothingId = route.params.clothingId; 
 const useItems = useItemsStore(); 
 
-function getScroll(){
-
-const fadeIn = {
-duration: 800,       
-delay: 10,          
-easing: 'ease-in-out',
-reset:true,
-threshold: 0.5
-};
-
-const slideUp = {
-origin: 'bottom',    
-distance: '50px',     
-duration: 800,       
-delay: 30,          
-easing: 'ease-in-out',
-threshold: 0.5
-};
-
-const slideDown = {
-origin: 'top',    
-distance: '50px',     
-duration: 800,       
-delay: 30,          
-easing: 'ease-in-out',
-reset:true
-};
-
-// ScrollReveal().reveal('.fadeIn', fadeIn);
-ScrollReveal().reveal('.slideDown', slideDown);
-ScrollReveal().reveal('.slideUp', slideUp);
+function scrollToContactUs() {
+  const section = document.getElementById("contact-us");
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
 }
+
 
 onMounted(() => {
   window.scrollTo(0, 0);
   useItems.getThisClothing(clothingId); 
   useItems.getRates();
   getScroll();
+  console.log(clothingId);
 });
 </script>
 
@@ -58,28 +34,28 @@ onMounted(() => {
       <img src="/src/assets/imgs/modelo-logo-1.png" alt="" width="130px" height="130px" />
     </div>
     <div class="options slideDown">
-      <div class="option shorts" @click="router.push({path:'shorts'})" >
+      <div class="option shorts" @click="router.push({path:'/shorts'})" >
         <p>Shorts</p>
       </div>
-      <div class="option blouses"  @click="router.push({path:'blouses'})">
+      <div class="option blouses"  @click="router.push({path:'/blouses'})">
         <p>Blusas</p>
       </div>
-      <div class="option pants"  @click="router.push({path:'pants'})" >
+      <div class="option pants"  @click="router.push({path:'/pants'})" >
         <p>Calças</p>
       </div>
-      <div class="option skirts"  @click="router.push({path:'skirts'})">
+      <div class="option skirts"  @click="router.push({path:'/skirts'})">
         <p>Saias</p>
       </div>
-      <div class="option dress"  @click="router.push({path:'dresses'})" >
+      <div class="option dress"  @click="router.push({path:'/dresses'})" >
         <p>Vestidos</p>
       </div>
-      <div class="option blazer"  @click="router.push({path:'blazers'})" >
+      <div class="option blazer"  @click="router.push({path:'/blazers'})" >
         <p>Blazers</p>
       </div>
-      <div class="option accessories" @click="router.push({path:'acessories'});">
+      <div class="option accessories" @click="router.push({path:'/acessories'});">
         <p>Acessórios</p>
       </div>
-      <div class="option bags"  @click="router.push({path:'bags'})" >
+      <div class="option bags"  @click="router.push({path:'/bags'})" >
         <p>Bolsas</p>
       </div>
     </div>

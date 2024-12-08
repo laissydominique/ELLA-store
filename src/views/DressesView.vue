@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useItemsStore } from "../stores/items"; 
 
+const useItems = useItemsStore(); 
 const router = useRouter();
 const dresses = ref([]);
 
@@ -57,63 +59,63 @@ function getScroll() {
 async function getDresses() {
   dresses.value.push(
     {
-      id: 19,
+      id: 37,
       title: "Vestido Midi Floral",
       image:
         "https://static.zara.net/assets/public/908f/6753/3c084eea9e12/5367727ddbc6/06962026330-p/06962026330-p.jpg?ts=1713889361340&w=824",
       price: 0.0 + ",00",
     },
     {
-      id: 26,
+      id: 38,
       title: "Vestido de Malha Listrado",
       image:
         "https://images.tcdn.com.br/img/img_prod/882133/vestido_longo_em_malha_2869_1_9553e2ab29ad8be50588730e01712c4d.jpg",
       price: 140.0 + ",00",
     },
     {
-      id: 21,
+      id: 39,
       title: "Vestido Tubinho Preto",
       image:
         "https://static.ecosweb.com.br/public/produtos/moda-feminina/vestido-midi/vestido-tubinho-preto-moda-evangelica_214046_600_1.webp",
       price: 110.0 + ",00",
     },
     {
-      id: 22,
+      id: 40,
       title: "Vestido Curto Rodado",
       image:
         "https://cdn.awsli.com.br/600x700/402/402845/produto/184531811/design-sem-nome---2024-03-19t113716-477-h0ckrftbdv.png",
       price: 195.0 + ",00",
     },
     {
-      id: 23,
+      id: 41,
       title: "Vestido de Alça Estampado",
       image:
         "https://cdn.awsli.com.br/1538/1538522/produto/208358230/whatsapp-image-2023-03-10-at-15-34-06-1-aawrpj.jpg",
       price: 190.0 + ",00",
     },
     {
-      id: 24,
+      id: 42,
       title: "Vestido Casual de Linho",
       image:
         "https://static.ecosweb.com.br/public/produtos/moda-feminina/vestido-midi/vestido-areia-em-linho_369183_600_1.webp",
       price: 300.0 + ",00",
     },
     {
-      id: 27,
+      id: 43,
       title: "Vestido de Festa com Renda",
       image:
         "https://cdn0.casamentos.com.br/article-vendor/0296/original/1280/jpeg/122ce7d5-ece2-4dd1-9326-cb69b22218a4_13_360296-165414239555123.jpeg",
       price: 550.0 + ",00",
     },
     {
-      id: 28,
+      id: 44,
       title: "Vestido Envelope Estampado",
       image:
         "https://a-static.mlcdn.com.br/1500x1500/vestido-feminino-envelope-longo-estampado-mira-luxo-modas/miramodas/1559p/ed6e571b820b4852ad37d4086cc08d40.jpeg",
       price: 135.0 + ",00",
     },
     {
-      id: 29,
+      id: 45,
       title: "Vestido Minimalista Branco",
       image:
         "https://cdn.dooca.store/153665/products/j9liao8qz2on8ougjgruemigugkncnw2hutw.jpg?v=1717544370",
@@ -178,7 +180,7 @@ onMounted(() => {
   </div>
   <div class="content-products">
     <div class="container-products" v-for="item in dresses">
-      <div class="image-product">
+      <div class="image-product"  @click="useItems.getThisItem(item.id)">
         <img :src="item.image" alt="" width="400px" height="500px" />
       </div>
       <div class="description-product">

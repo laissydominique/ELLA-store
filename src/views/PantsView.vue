@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useItemsStore } from "../stores/items"; 
 
+const useItems = useItemsStore(); 
 const router = useRouter();
 const pants = ref([]);
 
@@ -57,62 +59,62 @@ function getScroll() {
 async function getPants() {
   pants.value.push(
     {
-      id: 42,
+      id: 46,
       title: "Calça de Couro Sintético",
       image:
         "https://rosaprosa.cdn.magazord.com.br/img/2023/02/produto/4213/calca-jogger-feminina-couro-sintetico-rosa-prosa-1.png?ims=630x945",
       price: 180.0 + ",00",
     },
     {
-      id: 43,
+      id: 47,
       title: "Calça Cargo Feminina",
       image:
         "https://acdn.mitiendanube.com/stores/001/155/809/products/dsc_0239_21-609bfef35c44aa2a5e16759687205201-640-0.png",
       price: 130.0 + ",00",
     },
     {
-      id: 39,
+      id: 48,
       title: "Calça Wide Leg Rasgada",
       image: "https://cdn.awsli.com.br/600x450/2459/2459342/produto/305787370/29-g4dbnb8wxo.jpg",
       price: 110.0 + ",00",
     },
     {
-      id: 36,
+      id: 49,
       title: "Calça de Alfaiataria Beje",
       image:
         "https://s.bazara33.com.br/product/2023/12/alfaiataria-atemporal-versatil-roupas-classicas-58.jpg",
       price: 150.0 + ",00",
     },
     {
-      id: 38,
+      id: 50,
       title: "Calça Pantalona Preta",
       image:
         "https://static.ecosweb.com.br/public/produtos/moda-feminina/calca-pantalona/calca-pantalona-preta-em-veludo-cotele_375062_301_1.webp",
       price: 160.0 + ",00",
     },
     {
-      id: 40,
+      id: 51,
       title: "Calça Wide Leg Escura",
       image:
         "https://nossalojaoficial.com.br/media/catalog/product/cache/1/image/2000x2600/9df78eab33525d08d6e5fb8d27136e95/n/o/nossa_loja_-_studio_16-jeans_10_.jpg",
       price: 100.0 + ",00",
     },
     {
-      id: 42,
+      id: 52,
       title: "Calça Cargo Camuflada",
       image:
         "https://streetverseapparel.com.br/cdn/shop/files/3C3BC79A-110B-4AAA-9392-39822D835AA3_800x.jpg?v=1721614900",
       price: 130.0 + ",00",
     },
     {
-      id: 37,
+      id: 53,
       title: "Calça Flare Jeans Escura",
       image:
         "https://static.ecosweb.com.br/public/produtos/moda-feminina/calca-jeans/calca-jeans-escuro-flare-com-fenda_315508_301_1.webp",
       price: 140.0 + ",00",
     },
     {
-      id: 41,
+      id: 54,
       title: "Calça de Couro Preta",
       image:
         "https://acdn.mitiendanube.com/stores/002/889/295/products/img_2299-e1622c9eaeddd9230d17151033944196-1024-1024.jpeg",
@@ -175,8 +177,8 @@ onMounted(() => {
   </div>
   <div class="content-products">
     <div class="container-products" v-for="item in pants">
-      <div class="image-product">
-        <img :src="item.image" alt="" width="400px" height="510px" />
+      <div class="image-product"  @click="useItems.getThisItem(item.id)">
+        <img :src="item.image" alt="" width="400px" height="510px"/>
       </div>
       <div class="description-product">
         <div class="title-product">

@@ -1,7 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useItemsStore } from "@/stores/items";
 
+const useItems = useItemsStore();
 const router = useRouter();
 const shorts = ref([]);
 
@@ -57,44 +59,62 @@ function getScroll() {
 async function getShorts() {
   shorts.value.push(
     {
-      id: 9,
+      id: 55,
       title: "Short Jeans Casual",
       image:
         "https://a-static.mlcdn.com.br/450x450/short-jeans-fashion-casual-confortavel-fortaleza-jeans/mlmodasvariedades/29199-0001-3/07f073ab5079538837be601a55fe8583.jpeg",
       price: 90.0 + ",00",
     },
     {
-      id: 10,
+      id: 56,
       title: "Short de Sarja Branca",
       image:
         "https://a-static.mlcdn.com.br/450x450/short-jeans-feminino-branco-desfiado-cintura-alta-casual-zafina/zafina/mxd2878br44/9c038e9b4b7b2e6c914f60b5d38757fe.jpeg",
       price: 110.0 + ",00",
     },
     {
-      id: 18,
+      id: 57,
       title: "Short Jeans com Pérolas",
       image: "https://down-br.img.susercontent.com/file/03b8a3fce9b0c861055b08688a59ee9e",
       price: 150.0 + ",00",
     },
     {
-      id: 11,
+      id: 58,
       title: "Short de Linho Bege",
       image:
         "https://a-static.mlcdn.com.br/1500x1500/shorts-feminino-lunender-linho-bege-impala-39139/estrelacalcadoseconfeccoes/978751-m/bcfc86dfcbb475a9be8335c24df21ea2.jpeg",
       price: 120.0 + ",00",
     },
     {
-      id: 17,
+      id: 59,
       title: "Short Listrado com Amarração",
       image:
         "https://images-americanas.b2w.io/produtos/6014124047/imagens/short-cintura-alta-feminino-listrado-amarracao/6014124063_1_large.jpg",
       price: 100.0 + ",00",
     },
     {
-      id: 12,
+      id: 60,
       title: "Short Esportivo Preto",
       image: "https://imgcentauro-a.akamaihd.net/1366x1366/M0Q5BU50.jpg",
-      price: 70.0 + ",00",
+      price: 99 + ",99",
+    },
+    {
+      id: 61,
+      title: "Short Saia Jeans",
+      image: "https://atacado.stillgerjeans.com.br/wp-content/uploads/2024/07/unnamed-file-5.png",
+      price: 170.0 + ",00",
+    }, 
+    {
+      id: 62,
+      title: "Short Listrado",
+      image: "https://m.media-amazon.com/images/I/41eXtz33ebL._AC_.jpg",
+      price: 110.0 + ",00",
+    },    
+    {
+      id: 63,
+      title: "Short Cerejas",
+      image: "https://torratorra.vtexassets.com/arquivos/ids/2000484/13111001536509.jpg?v=638681575681270000",
+      price: 120.0 + ",00",
     }
   );
 }
@@ -155,8 +175,8 @@ onMounted(() => {
   </div>
   <div class="content-products">
     <div class="container-products" v-for="item in shorts">
-      <div class="image-product">
-        <img :src="item.image" alt="" width="400px" height="400px" />
+      <div @click="useItems.getThisItem(item.id)" class="image-product" >
+        <img :src="item.image" alt="" width="320px" height="320px" />
       </div>
       <div class="description-product">
         <div class="title-product">
@@ -230,11 +250,10 @@ onMounted(() => {
 
 .content-products {
   display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;  
+  justify-items: center; 
   margin-top: 5rem;
-  row-gap: 3rem;
 }
 
 .container-products {
@@ -242,7 +261,8 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 500px;
+  min-width: 350px;
+  max-width: 400px;
   height: 500px;
   overflow: hidden;
   position: relative;
@@ -272,6 +292,7 @@ onMounted(() => {
 
 .price-product,
 .title-product {
+  margin-left: 2rem;
   height: 30px;
   cursor: pointer;
 }
