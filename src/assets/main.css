@@ -110,7 +110,6 @@
 .release-title {
   margin-top: 5rem;
   display: flex;
-  text-align: center;
   justify-content: center;
   align-items: center;
 }
@@ -351,3 +350,109 @@ form label {
 }
 
 /* ANIMATIONS */
+
+
+@media (max-width: 480px) {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .options{
+    display: none;
+  }
+
+  .option, .contact {
+    display: none;
+  }
+
+  .options-imgs{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .img-option {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-option img{
+    width: 55px;
+    height: 55px;
+  }
+
+  .img-option .caption{
+    width: 55px;
+    height: 55px;
+  }
+
+  .container-realease {
+    width: 100%; 
+    height: auto; 
+  }
+
+  .release-clothes, .release-jewelry {
+    display: flex;
+    margin-left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-realeases{
+    display: grid;
+    padding: 1rem;
+  }
+
+  .name input, .subject input, textarea, .submit button {
+    width: 100%; 
+  }
+
+  .contact {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .footer {
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .footer p {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .options {
+    gap: 2rem;
+  }
+
+  .content-realeases {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .contact-us {
+    padding: 2rem;
+  }
+
+  .container-realease {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1025px) {
+  .options {
+    gap: 3rem;
+  }
+
+  .contact {
+    flex-direction: row;
+  }
+}
